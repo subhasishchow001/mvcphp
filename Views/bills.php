@@ -112,7 +112,7 @@
 	     ?> </p>
           </div>
         </div>
-        <div><button class="btn btn-info" onclick="printPage()">print</button></div>
+        <div><button class="btn btn-info" onclick="printPage();">print</button></div>
       </div>
     </div>
   </div>
