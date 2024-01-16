@@ -31,7 +31,7 @@
             	?>
 	              <li class="text">To: <span style="color:#5d9fc5 ;"><?= $names->name; ?></span></li>
 	              <li class="text">Address: <?= $names->address; ?></li>
-	              <li class="text"><i class="fas fa-phone"></i><?= $names->phone;?></li>
+	              <li class="text"><i class="fas fa-phone"></i>Phone No: <?= $names->phone;?></li>
             	<?php
             	} ?>
 
