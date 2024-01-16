@@ -1,0 +1,28 @@
+#studenttable,th,tr,td{
+	border: 1px solid;
+}
+#studenttable tr:odd{
+	background-color: #ccc;
+}
+#studenttable thead{
+	background-color: #000;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 400;
+}
+.thumbnil1{
+	height: 100px;
+	width: 150px;
+}
+#studenttable td{
+	font-weight: 450;
+	font-size: 18px;
+}
+#studentimage1{
+	height: 150px !important;
+	width: 150px;
+}
+#paymetu img{
+	max-width: 150px;
+	max-height: 200px;
+}
