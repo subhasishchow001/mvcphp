@@ -196,6 +196,15 @@ class Model {
 		}
 		return $ttpay;
 	}
+	public function PaymentCount($tbl,$date)
+	{
+		$payt="SELECT COUNT(`rupees`) FROM $tbl WHERE `paymentdate` = '$date'";
+		$payments= $this->connection->query($payt);
+		while ($data=mysqli_fetch_array($payments)) {
+			$paycount=$data[0];
+		}
+		return $paycount;
+	}
     	
     
 

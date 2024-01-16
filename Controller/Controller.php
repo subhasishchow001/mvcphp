@@ -58,14 +58,19 @@ class Controller extends Model {
 				// 	break;
 				case '/home':
 						if ($_SESSION['user_data']->role_id == 0 || $_SESSION['user_data']->role_id == 1 ) {
+							//Total Students
 							$studentda= $this->getStudentData('student');
 							$date=date("y-m-d");
-							
+							//Total Payment Today
 							$paymentdata= $this->Viewpayment('payment');
 							$pay=$paymentdata['Data'];
-
+							//Today's Payment
 							$pp= $this->Todaypayment('payment',$date);
 							$tpay=$this->Totalpayment('payment');
+							//Todays Payment Count
+							$countp=$this->PaymentCount('payment',$date);
+							
+
 
 							include 'Views/index.php';
 						}
@@ -149,7 +154,6 @@ class Controller extends Model {
 							}else{
 								echo "field empty";
 							}
-							// exit();
 						}
 						else{
 							header('Location: /');
@@ -226,10 +230,7 @@ class Controller extends Model {
 						else{
 							header('Location: /');
 						}
-					break;	
-
-
-
+					break;
 
 					/*********Apis********/
 					case '/sdataap':
