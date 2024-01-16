@@ -26,6 +26,9 @@
 		?>
 	</tbody>
 </table>
+<div class="container">
+	<div><a href="/students" class="btn btn-warning">Back</a></div>
+</div>
 
 
 
