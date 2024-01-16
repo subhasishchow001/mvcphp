@@ -34,7 +34,7 @@
                         <td><?= $studentdata->subject; ?></td>
                         <td><?= $studentdata->class; ?></td>
                         <td><?= $studentdata->year; ?></td>
-                        <td><input type="button" name="viewpayment" value="details" class="btn btn-primary"></td>
+                        <td><a name="viewpayment" value="details" class="btn btn-primary" href="studentdata?user=<?= $studentdata->id; ?>"> View Details</a>
                         
                         <?php if($_SESSION['user_data']->role_id == 1 ){ ?>
                         <td><input type="button" name="editpayment" value="edit payment" class="btn btn-warning"></td>

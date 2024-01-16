@@ -205,7 +205,25 @@ class Model {
 		}
 		return $paycount;
 	}
-    	
+    
+    public function StudentPayment($tbl,$where)
+    {
+    	$sqlquery= "SELECT * FROM $tbl WHERE `userid`= $where";
+    	$result= $this->connection->query($sqlquery);
+		 if ($result->num_rows >0) {
+				while ($data = $result->fetch_object()) {
+				 		$semdata[]= $data; 
+				 	}
+				 		$response['Data']= $semdata;
+						$response['code']= true;
+						$response['msg']= 'Data fetched';
+				 }else{
+					$response['Data']= null;
+					$response['code']= false;
+					$response['msg']= 'there is not any admin users';
+				}
+				return $response;
+    }
     
 
 }

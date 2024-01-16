@@ -231,7 +231,17 @@ class Controller extends Model {
 							header('Location: /');
 						}
 					break;
+				case '/studentdata':
+						if ($_SESSION['user_data']->role_id == 1 || $_SESSION['user_data']->role_id == 0 ) {
+							$where=['id'=>$_GET['user']];
+							$paymentsem= $this->StudentPayment('payment',$where['id']);
+							$semds=$paymentsem['Data'];
+							include 'Views/viewstudents.php';
 
+						}else{
+							header('Location: /');
+						}
+					break;
 					/*********Apis********/
 					case '/sdataap':
 						$studentda= $this->getStudentData('student');
