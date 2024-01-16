@@ -224,7 +224,42 @@ class Model {
 				}
 				return $response;
     }
-    
+        public function Billpayment($tbl,$where)
+    {
+    	$sqlquery= "SELECT * FROM $tbl WHERE `id`= $where";
+    	$result= $this->connection->query($sqlquery);
+		 if ($result->num_rows >0) {
+				while ($data = $result->fetch_object()) {
+				 		$billdata[]= $data; 
+				 	}
+				 		$response['Data']= $billdata;
+						$response['code']= true;
+						$response['msg']= 'Data fetched';
+				 }else{
+					$response['Data']= null;
+					$response['code']= false;
+					$response['msg']= 'there is not any admin users';
+				}
+				return $response;
+    }
+     public function studentnameaddr($tbl,$toc)
+    {
+    	$sqlquery1= "SELECT name, address,phone FROM `student` WHERE id=$toc";
+    	$result1= $this->connection->query($sqlquery1);
+		 if ($result1->num_rows >0) {
+				while ($data1 = $result1->fetch_object()) {
+				 		$billdata1[]= $data1; 
+				 	}
+				 		$newresponse['Data']= $billdata1;
+						$newresponse['code']= true;
+						$newresponse['msg']= 'Data fetched';
+				 }else{
+					$newresponse['Data']= null;
+					$newresponse['code']= false;
+					$newresponse['msg']= 'there is not any admin users';
+				}
+				return $newresponse;
+    }
 
 }
 

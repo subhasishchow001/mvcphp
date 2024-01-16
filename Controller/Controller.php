@@ -233,8 +233,9 @@ class Controller extends Model {
 					break;
 				case '/studentdata':
 						if ($_SESSION['user_data']->role_id == 1 || $_SESSION['user_data']->role_id == 0 ) {
-							$where=['id'=>$_GET['user']];
-							$paymentsem= $this->StudentPayment('payment',$where['id']);
+						
+							$where1=['id'=>$_GET['user']];
+							$paymentsem= $this->StudentPayment('payment',$where1['id']);
 							$semds=$paymentsem['Data'];
 							include 'Views/viewstudents.php';
 
@@ -242,12 +243,30 @@ class Controller extends Model {
 							header('Location: /');
 						}
 					break;
+					case '/bill':
+					if ($_SESSION['user_data']->role_id == 1 || $_SESSION['user_data']->role_id == 0 ) {
+							$where=['id'=>$_GET['bill']];
+							$paymentsem= $this->Billpayment('payment',$where['id']);
+							$billd=$paymentsem['Data'];
+							foreach ($billd as $bill) {
+								$new=$bill->userid;
+								$stuname= $this->studentnameaddr('payment',$new);
+								$stu=$stuname['Data'];
+
+							}
+							
+							include 'Views/bills.php';
+						}else{
+							header('Location: /');
+						}
+						
+						break;
 					/*********Apis********/
 					case '/sdataap':
 						$studentda= $this->getStudentData('student');
 						print_r(array_values($studentda));
-						break;
 					break;
+				
 				default:
 					
 					break;

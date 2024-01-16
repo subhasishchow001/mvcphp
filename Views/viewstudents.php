@@ -7,12 +7,14 @@
 		<th>paymentcount</th>
 		<th>rupees</th>
 		<th>paymentdate</th>
+		<th>Print</th>
 	</thead>
 	<tbody>
 
 		<?php 
 			$i=0;
 			foreach ($semds as $semd) {
+
 				?>
 				<tr>
 					<td><?=$semd->semester;?></td>
@@ -21,6 +23,7 @@
 					<td><?=$semd->paymentcount?></</td>
 					<td><?=$semd->rupees?></td>
 					<td><?=$semd->paymentdate?></td>
+					<td><a name="billprint" href="/bill?bill=<?=$semd->id;?>" class="btn btn-success">Print</a></td>
 				</tr>
 			<?php }
 		?>

@@ -53,16 +53,10 @@ $(document).ready(function() {
 
     });  
 /*********Print********/
-   function printButton(){
-        var a=window.open('','');
-        a.document.write('<html> <title>Print</title>');
-        a.document.write('<body style="font-family: sans-serif">');
-        a.document.write();
-        a.document.write('</body></html>');
-        a.document.close();
-        a.print();
-   }
 });
+function printPage() {
+    window.print();
+}
 
 
 
