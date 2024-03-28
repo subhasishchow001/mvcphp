@@ -322,6 +322,40 @@ class Model {
 		return $response;
 
    }
+   function editstudentdataget($tbl,$id){
+   	$query= " SELECT * FROM $tbl WHERE id=$id";
+   	$editget = $this->connection->query($query);
+    	if ($editget->num_rows >0) {
+		 	while ($data = $editget->fetch_object()) {
+		 		$newedit[]=$data; 	
+		 	}
+		 	$response['Data']= $newedit;
+			$response['code']= true;
+			$response['msg']= 'Data fetched';
+		 }else{
+			$response['Data']= null;
+			$response['code']= false;
+			$response['msg']= 'there is error in fetching';
+		}
+		return $response;
+
+   }
+   function editstudentdataup($tbl,$id,$values){
+   	$updatequery= "UPDATE $tbl SET name= '$values[0]' , fathername= '$values[1]', emailid='$values[2]',phone=$values[3],address='$values[4]',subject='$values[5]',dob='$values[8]',class='$values[6]',year=$values[7] WHERE id= $id";
+
+    	$updatestudents = $this->connection->query($updatequery);
+    	if ($updatestudents) {
+			$response['Data']= $updatestudents;
+			$response['code']= true;
+			$response['msg']= 'data updated';
+		}else{
+			$response['Data']= null;
+			$response['code']= false;
+			$response['msg']= 'data update faild';
+		}
+		return $response;
+
+   }
 /*new added ends*/
 }
 

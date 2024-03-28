@@ -60,7 +60,7 @@
                         <td><a name="viewpayment" value="details" class="btn btn-primary" href="studentdata?user=<?= $studentdata->id; ?>"> View Details</a>
                         <?php if($_SESSION['user_data']->role_id == 1 ){ ?>
                         <td><button name="editstudent" value="edit details" class="btn btn-warning" >
-                            <a href="#">Edit Details</a>
+                            <a href="/editstudent?studentedit=<?= $studentdata->id; ?>">Edit Details</a>
                         </button></td>
                         <?php } ?>
                     </tr>

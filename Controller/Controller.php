@@ -2,6 +2,7 @@
 
 date_default_timezone_set('Asia/Kolkata');
 require_once('Model/Model.php');
+error_reporting(false);
 session_start();
 
 class Controller extends Model {
@@ -126,7 +127,6 @@ class Controller extends Model {
 								];
 								
 							}
-
 							if (!empty($rupees)) {
 								$updates= $this->editpayment('payment',$where['id'],$updatedata);
 							}
@@ -141,6 +141,35 @@ class Controller extends Model {
 						include 'Views/404.php';
 					}
 					break;
+					case '/editstudent':
+						if ($_SESSION['user_data']->role_id == 1){
+							$id = ['id'=>$_GET['studentedit']];
+							$editgetdata=$this->editstudentdataget('student',$id['id']);
+							$editgets=$editgetdata['Data'];
+
+							if (isset($_POST['updatestudent'])) {
+								$updateddetails=[
+									$ufname=$_POST['efname'],
+									$ufather=$_POST['efathername'],
+									$uemail= $_POST['eemail'],
+									$uphone= $_POST['ephone'],
+									$uaddress= $_POST['eaddress'],
+									$usubject= $_POST['esubject'],
+									$uclass= $_POST['eyid'],
+									$uyear= $_POST['eyearselect'],
+									$udate= date("Y-m-d",strtotime($_POST['edate']))
+								];
+							}
+					if (!empty($ufname)||!empty($ufather)|| !empty($uemail)|| !empty($uphone)|| !empty($uaddress)|| !empty($usubject)|| !empty($uclass)|| !empty($udate)) {
+							
+					$updatestudent= $this->editstudentdataup('student',$id['id'],$updateddetails);
+							}
+							$id = ['id'=>$_GET['studentedit']];
+							$editgetdata=$this->editstudentdataget('student',$id['id']);
+							$editgets=$editgetdata['Data'];
+							include 'Views/adminpages/editstudents.php';	
+						}
+						break;
 				/***********New Add ends**************/
 				case '/viewadmin':
 					if ($_SESSION['user_data']->role_id == 1){
@@ -278,6 +307,7 @@ class Controller extends Model {
 							header('Location: /');
 						}
 					break;
+
 					case '/bill':
 					if ($_SESSION['user_data']->role_id == 1 || $_SESSION['user_data']->role_id == 0 ) {
 							$where=['id'=>$_GET['bill']];
