@@ -101,8 +101,12 @@ class Model {
 
 	/*********************************Fetch student List From Database****************/
 	function getStudentData( $tblname){
-		$students="SELECT * FROM $tblname ";
-		$exstudent= $this->connection->query($students);
+		$students1="SELECT * FROM $tblname";
+
+		$exstudent= $this->connection->query($students1);
+
+
+
 		if ($exstudent->num_rows >0) {
 		 	while ($data = $exstudent->fetch_object()) {
 		 		$student[]= $data; 
@@ -120,7 +124,7 @@ class Model {
 
 /*****************get single value as ajax************************************/
 	 function getStudentajax( $tblname){
-        $students="SELECT `id` ,`name` FROM $tblname ";
+        $students="SELECT `id` ,`name` FROM $tblname " ;
         $exstudent= $this->connection->query($students);
     // $row= mysqli_fetch_array($exstudent,MYSQLI_ASSOC);
     // print_r($row);
@@ -224,7 +228,7 @@ class Model {
 				}
 				return $response;
     }
-        public function Billpayment($tbl,$where)
+ public function Billpayment($tbl,$where)
     {
     	$sqlquery= "SELECT * FROM $tbl WHERE `id`= $where";
     	$result= $this->connection->query($sqlquery);
@@ -261,6 +265,64 @@ class Model {
 				return $newresponse;
     }
 
+
+/******************New Added*********************/
+    function getSem($tbl){
+    	$query="SELECT userid as user,max(substring(semester,1,1)) as semname from $tbl group by userid";
+    	$res= $this->connection->query($query);
+    	if ($res->num_rows >0) {
+				while ($data = $res->fetch_object()) {
+				 		$semester[]= $data; 
+				 	}
+				 		$response['Data']= $semester;
+						$response['code']= true;
+						$response['msg']= 'Data fetched';
+				}else{
+					$response['Data']= null;
+					$response['code']= false;
+					$response['msg']= 'there is not any admin users';
+		}
+				return $response;
+    
+    }
+    /**********New End********/
+    function billdetails($tbl,$bid){
+    	$query= "SELECT * from $tbl WHERE id= $bid";
+    	$res= $this->connection->query($query);
+    	if ($res->num_rows >0) {
+				while ($data = $res->fetch_object()) {
+				 		$billsin[]= $data; 
+				 	}
+				 		$response['Data']= $billsin;
+						$response['code']= true;
+						$response['msg']= 'Data fetched';
+				}else{
+					$response['Data']= null;
+					$response['code']= false;
+					$response['msg']= 'there is not any admin users';
+		}
+				return $response;
+
+    }
+
+/*new added*/
+   function editpayment($tbl,$id,$values){
+
+    	$query= "UPDATE $tbl SET semester='$values[0]',rupees=$values[1],paymenttype='$values[2]',paymentcount='$values[3]' WHERE id= $id";
+    	$updateexe = $this->connection->query($query);
+    	if ($updateexe) {
+			$response['Data']= $updateexe;
+			$response['code']= true;
+			$response['msg']= 'data inserted';
+		}else{
+			$response['Data']= null;
+			$response['code']= false;
+			$response['msg']= 'data insert faild';
+		}
+		return $response;
+
+   }
+/*new added ends*/
 }
 
 ?>

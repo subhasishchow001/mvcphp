@@ -55,12 +55,12 @@
           <label for="inputState" class="form-label">Year</label>
           <select id="inputState" class="form-select" name="yearselect">
             <option value="0">Choose...</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
+            <option value="<?= date("Y"); ?>"><?= date("Y"); ?></option>
+    <!--         <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
-            <option value="2024">2024</option>
+            <option value="2024">2024</option> -->
           </select>
         </div>
         <div class="col-md-4">

@@ -70,8 +70,6 @@ class Controller extends Model {
 							//Todays Payment Count
 							$countp=$this->PaymentCount('payment',$date);
 							
-
-
 							include 'Views/index.php';
 						}
 						else{
@@ -111,6 +109,39 @@ class Controller extends Model {
 						include 'Views/404.php';
 					}
 					break;
+				/********new Add**********/
+				case '/editpayment':
+					if ($_SESSION['user_data']->role_id == 1){
+						
+							$where=['id'=>$_GET['edit']];
+							$billdata= $this->billdetails('payment',$where['id']);
+							$billdat= $billdata['Data'];
+
+							if (isset($_POST['updatedata'])) {
+								$updatedata=[
+									$semester=$_POST['selectsem'],
+									$rupees=$_POST['uprupees'],
+									$paymenttype=$_POST['paymenttype'],
+									$paymentmode=$_POST['paymentcount']
+								];
+								
+							}
+
+							if (!empty($rupees)) {
+								$updates= $this->editpayment('payment',$where['id'],$updatedata);
+							}
+							$where=['id'=>$_GET['edit']];
+							$billdata= $this->billdetails('payment',$where['id']);
+							$billdat= $billdata['Data'];
+
+							include 'Views/adminpages/editpayment.php';
+							
+					}
+					else{
+						include 'Views/404.php';
+					}
+					break;
+				/***********New Add ends**************/
 				case '/viewadmin':
 					if ($_SESSION['user_data']->role_id == 1){
 						$where = ['role_id'=>0];
@@ -225,6 +256,10 @@ class Controller extends Model {
 
 						$studentda= $this->getStudentData('student');
 						$studentdatas= $studentda['Data'];
+/*new added**/
+						$csem= $this->getSem('payment');
+						$seme= $csem['Data'];
+/*new end*/
 							include 'Views/showstudents.php';
 						}
 						else{

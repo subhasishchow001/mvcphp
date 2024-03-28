@@ -16,6 +16,7 @@
                     <th>Subjects</th>
                     <th>Stream</th>
                     <th>Year</th>
+                    <th>Current Sem</th>
                     <th>Payment</th>
                     <?php if($_SESSION['user_data']->role_id == 1 ){ ?>        
                     <th>Edit</th>
@@ -34,10 +35,33 @@
                         <td><?= $studentdata->subject; ?></td>
                         <td><?= $studentdata->class; ?></td>
                         <td><?= $studentdata->year; ?></td>
+                        <td>
+                            <?php
+                            /*new added*/
+                            foreach ($seme as $sem) {
+                               if ($studentdata->id === $sem->user) {
+
+                                    if ($sem->semname== 1) {
+                                       echo $sem->semname."st";
+                                    }elseif($sem->semname == 2){
+                                        echo $sem->semname."nd";
+                                        }
+                                    elseif($sem->semname == 3){
+                                        echo $sem->semname."rd";
+                                        }
+                                    elseif($sem->semname != 1 || 2 || 3){
+                                        echo $sem->semname."th";
+                                     }
+                                }
+                            }
+                            /*New added ends*/
+                            ?>
+                        </td>
                         <td><a name="viewpayment" value="details" class="btn btn-primary" href="studentdata?user=<?= $studentdata->id; ?>"> View Details</a>
-                        
                         <?php if($_SESSION['user_data']->role_id == 1 ){ ?>
-                        <td><input type="button" name="editpayment" value="edit payment" class="btn btn-warning"></td>
+                        <td><button name="editstudent" value="edit details" class="btn btn-warning" >
+                            <a href="#">Edit Details</a>
+                        </button></td>
                         <?php } ?>
                     </tr>
                     <?php

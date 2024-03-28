@@ -8,6 +8,14 @@
 		<th>rupees</th>
 		<th>paymentdate</th>
 		<th>Print</th>
+		<?php if($_SESSION['user_data']->role_id == 1){ ?>
+		<th>Edit Payment</th>
+		<?php }
+		else{
+			echo "No such url";
+		}
+		 ?>
+	
 	</thead>
 	<tbody>
 
@@ -24,6 +32,13 @@
 					<td><?=$semd->rupees?></td>
 					<td><?=$semd->paymentdate?></td>
 					<td><a name="billprint" href="/bill?bill=<?=$semd->id;?>" class="btn btn-success">Print</a></td>
+
+
+					<?php if ($_SESSION['user_data']->role_id == 1 ){ ?>
+						<td><button name="editstudent" value="edit details" class="btn btn-warning" >
+                            <a href="/editpayment?edit=<?= $semd->id ?>">Edit Payment</a>
+                        </button></td>
+					<?php } ?>
 				</tr>
 			<?php }
 		?>

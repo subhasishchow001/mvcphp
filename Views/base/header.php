@@ -4,8 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <link rel="icon" type="image/icon type" href="assets/exjs/img/mm.png">
         <title>Dashboard - Mondal Coaching</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
@@ -116,7 +115,7 @@
                                     </div>
                                 </nav>
                             </div>
-                            <!--  Only For Super admin Starts -->
+                            <!--  Only For Super admin Ends -->
                             <?php endif ?>
                             <div class="sb-sidenav-menu-heading">Assosiate</div>
                             <a class="nav-link" href="/payment">
