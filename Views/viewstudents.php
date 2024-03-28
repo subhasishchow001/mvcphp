@@ -35,9 +35,9 @@
 
 
 					<?php if ($_SESSION['user_data']->role_id == 1 ){ ?>
-						<td><button name="editstudent" value="edit details" class="btn btn-warning" >
-                            <a href="/editpayment?edit=<?= $semd->id ?>">Edit Payment</a>
-                        </button></td>
+						<td>
+                            <a href="/editpayment?edit=<?= $semd->id ?>" class="btn btn-warning">Edit Payment</a>
+                        </td>
 					<?php } ?>
 				</tr>
 			<?php }

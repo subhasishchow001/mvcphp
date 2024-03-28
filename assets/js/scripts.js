@@ -28,30 +28,30 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
 
-// $(document).ready(function() {
-//      $('#studenttable').DataTable({
-//         'serverSide':false,
-//         'processing':true,
-//         'paging':true,
-//         'order':[],
-//      });
+$(document).ready(function() {
+     $('#studenttable').DataTable({
+        'serverSide':false,
+        'processing':true,
+        'paging':true,
+        'order':[],
+     });
 
-//   $("#AttorneyEmpresa").change (function () {  
-//         var selectedCountry = $(this).children("option:selected").val();  
+  $("#AttorneyEmpresa").change (function () {  
+        var selectedCountry = $(this).children("option:selected").val();  
 
-//         var components= selectedCountry.split(' ');
-//         var numericValue = parseInt(components[0], 10);
-//         var name = components[1];
-//         var newname= components.slice(1,3).join('');
-//         var degree = components.slice(3).join('');
-//         var imagename= newname+degree;
+        var components= selectedCountry.split(' ');
+        var numericValue = parseInt(components[0], 10);
+        var name = components[1];
+        var newname= components.slice(1,3).join('');
+        var degree = components.slice(3).join('');
+        var imagename= newname+degree;
 
-//       //Updating to field
-//        $('#numericValueInput').attr('value',numericValue);
-//        $('#studentname').val(name);
-//        $('#studentimage1').attr('src','uploads/'+imagename);
+      //Updating to field
+       $('#numericValueInput').attr('value',numericValue);
+       $('#studentname').val(name);
+       $('#studentimage1').attr('src','uploads/'+imagename);
 
-//     });  
+    });  
 // /*********Print********/
 // });
 function printPage() {

@@ -59,9 +59,9 @@
                         </td>
                         <td><a name="viewpayment" value="details" class="btn btn-primary" href="studentdata?user=<?= $studentdata->id; ?>"> View Details</a>
                         <?php if($_SESSION['user_data']->role_id == 1 ){ ?>
-                        <td><button name="editstudent" value="edit details" class="btn btn-warning" >
-                            <a href="/editstudent?studentedit=<?= $studentdata->id; ?>">Edit Details</a>
-                        </button></td>
+                        <td><!-- New Add-->
+                            <a href="/editstudent?studentedit=<?= $studentdata->id; ?>" class="btn btn-warning">Edit Details</a>
+                       </td>
                         <?php } ?>
                     </tr>
                     <?php
